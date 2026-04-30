@@ -4,7 +4,7 @@ import NombrePerfil from './NombrePerfil.js'
 
 function App() {
 
-  const handleHobbyClick = (hobby:string) => {
+  function handleHobbyClick(hobby:string) {
     alert(`You clicked on: ${hobby}`);
   };
 
