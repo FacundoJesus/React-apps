@@ -1,16 +1,16 @@
 
-function NombrePerfil({name,age,esMiembro,hobbies} : Props) {
+function NombrePerfil({name,age,isMember,hobbies,onHobbyClick} : Props) {
 
     return(
         <div>
             <h2>Nombre: {name}</h2>
             <h2>Edad: {age}</h2>
-            <h2>Es Miembro: {(esMiembro) ? "Miembro activo":"Miembro no activo"}</h2>
+            <h2>Es Miembro: {(isMember) ? "Miembro activo":"Miembro no activo"}</h2>
             <h3>Hobbies:</h3>
             <ul>
                 {
                     hobbies.map((hobby,index) => {
-                        return <li key={index}>{hobby}</li>;                  
+                        return <li key={index} onClick={() => onHobbyClick(hobby)}>{hobby}</li>;                  
                     })
                 }
             </ul>
@@ -21,9 +21,9 @@ function NombrePerfil({name,age,esMiembro,hobbies} : Props) {
 type Props = {
   name: string;
   age: number;
-  esMiembro: boolean;
-  hobbies: Array<String>;
-
+  isMember: boolean;
+  hobbies: string[],
+  onHobbyClick: (hobby: string) => void;
 };
 
 export default NombrePerfil;
