@@ -1,75 +1,33 @@
 import './App.css'
+import Header from './components/Header.jsx'
+import Sobre from './components/Sobre.jsx'
+import Proyectos from './components/Proyectos.jsx'
+import Contacto from './components/Contacto.jsx'
+import Footer from './components/Footer.jsx'
 
 function App() {
 
-  const nombre = "Facundo Jesús Citera";
-  const profesion = "Programador Jr.";
-  const proyectos = [
-    {
-    title: "Primer proyecto",
-    description: "Aplicación  web construida usando React y Node",
-    link: "#"
-    },
-    {
-    title: "Segundo proyecto",
-    description: "Aplicación E-commerce con Java + SpringBoot 4.0",
-    link: "#"
-    },
-    {
-    title: "Tercer proyecto",
-    description: "Página web con HTML, CSS Y Javascript.",
-    link: "#"
-    }
-]
-
   return (
     <div className="App">
-
-    {/* Cabezera */}
-      <header className="header">
-        <h1>{nombre}</h1>
-        <p>{profesion}</p>
-        <nav>
-          <a href="#sobre">Sobre</a>
-          <a href="#proyectos">Proyectos</a>
-          <a href="#contacto">Contacto</a>
-        </nav>
-      </header>
+    
+      {/* Cabezera */}
+      <Header />
 
       {/* Sección "Sobre" */}
-      <section id="sobre" className="seccion-sobre">
-        <h2>Sobre mi...</h2>
-        <p>Hola! Soy {nombre}, un {profesion}. Amo construir aplicaciones web que resuelvan problemas del mundo real.</p>
-      </section>
+      <Sobre />
       
       {/* Sección "Proyectos" */}
-      <section id="proyectos" className="seccion-proyectos">
-        <h2>Proyectos</h2>
-        <div className="lista-proyectos">
-        {proyectos.map((proyecto,idx) => (
-          <div key={idx} className="item-proyecto">
-          <h3>{proyecto.title}</h3>
-          <h4>{proyecto.description}</h4>
-          <a href={proyecto.link} target="_blank" rel="noopener noreferrer">Ver Proyecto</a>
-        </div>
-      ))}
-      </div>
-      </section>
+      <Proyectos />
 
       {/* Sección "Contacto" */}
-      <section id="contacto" className="seccion-contacto">
-        <h2>Contacto</h2>
-        <p>Si quieres ponerte en contacto conmigo, no dudes en escribirme a esta dirección: <a href="mailto:facundojesus10@hotmail.com">facundojesus10@hotmail.com</a></p>
-      </section>
+      <Contacto />
 
       {/* Footer */}
-      <footer className="footer">
-        <p>2026. Citera, Facundo Jesús</p>
-      </footer>
+      <Footer />
 
     </div>
     
   )
 }
 
-export default App
+export default App;

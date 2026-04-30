@@ -1,0 +1,11 @@
+button {
+    background-color: aqua;
+    padding: 20px;
+    margin: 20px;
+    align-items: center;
+    color: blueviolet;
+}
+
+button:hover {
+    background-color: blue;
+}
