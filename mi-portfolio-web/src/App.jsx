@@ -21,8 +21,9 @@ function App() {
 
   return (
     <div className="App">
+
     {/* Cabezera */}
-      <header className="Header">
+      <header className="header">
         <h1>{nombre}</h1>
         <p>{profesion}</p>
         <nav>
@@ -45,8 +46,8 @@ function App() {
         {proyectos.map((proyecto,idx) => (
           <div key={idx} className="item-proyecto">
           <h3>{proyecto.title}</h3>
-          <h3>{proyecto.description}</h3>
-          <h3>{proyecto.link}</h3>
+          <h4>{proyecto.description}</h4>
+          <a href={proyecto.link} target="_blank" rel="noopener noreferrer">Ver Proyecto</a>
         </div>
       ))}
       </div>
@@ -58,10 +59,11 @@ function App() {
         <p>Si quieres ponerte en contacto conmigo, no dudes en escribirme a esta dirección: <a href="mailto:facundojesus10@hotmail.com">facundojesus10@hotmail.com</a></p>
       </section>
 
-      {/* Seccion "Footer*/}
-      <footer clasName="footer">
+      {/* Footer */}
+      <footer className="footer">
         <p>2026. Citera, Facundo Jesús</p>
       </footer>
+
     </div>
     
   )
