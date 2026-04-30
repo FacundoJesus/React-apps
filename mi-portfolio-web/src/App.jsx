@@ -1,8 +1,8 @@
 import './App.css'
 import Header from './components/Header.jsx'
 import Sobre from './components/Sobre.jsx'
-import Proyectos from './components/Proyectos.jsx'
-import Contacto from './components/Contacto.jsx'
+import Proyectos from './components/Projects.jsx'
+import Contacto from './components/Contact.jsx'
 import Footer from './components/Footer.jsx'
 
 function App() {
