@@ -1,7 +1,5 @@
 import './App.css'
 
-
-
 function App() {
 
   const nombre = "Facundo Jesús Citera";
@@ -15,6 +13,11 @@ function App() {
     {
     title: "Segundo proyecto",
     description: "Aplicación E-commerce con Java + SpringBoot 4.0",
+    link: "#"
+    },
+    {
+    title: "Tercer proyecto",
+    description: "Página web con HTML, CSS Y Javascript.",
     link: "#"
     }
 ]
