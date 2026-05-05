@@ -15,7 +15,7 @@ function App() {
   return (
     <div>
       <h1>Valor actual: {count}</h1>
-      <button onClick= {decrementar}>Decrementar</button>
+      <button onClick={decrementar}>Decrementar</button>
       <button onClick={incrementar}>Incrementar</button>
     </div>
   )
