@@ -21,7 +21,7 @@ function App() {
   }
 
   return (
-    <div className='form-cotainer'>
+    <div className='form-container'>
 
       <h1>Form Example</h1>
 
