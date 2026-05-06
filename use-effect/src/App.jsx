@@ -10,7 +10,7 @@ function App() {
   },[count,anotherValue])
 
 
-  
+
   const incrementCount = () => {
     setCount(count+1);
   }
@@ -20,13 +20,11 @@ function App() {
   }
 
   return (
-    
     <div>
       <h1>useEffect Hook</h1>
       <button onClick={incrementCount}>Increment</button>
       <button onClick={incrementAnotherValueCount}>Increment Another Value</button>
     </div>
-
   )
 }
 
