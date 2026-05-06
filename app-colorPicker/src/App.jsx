@@ -15,7 +15,7 @@ function App() {
 
   return (
 
-    <div style={{backgroundColor}} className=''>
+    <div style={{backgroundColor}} className='app-container'>
     
       <h1>Color Picker</h1>
 
@@ -26,10 +26,14 @@ function App() {
       ))}
       </div>
 
+      <div className='custom-color-picker'>
+      <input type='color' value={backgroundColor} onChange={(e) => handleColorChange(e.target.value)}></input>
+      </div>
+
     </div>
       
   )
-  
+
 }
 
 export default App
