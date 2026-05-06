@@ -9,10 +9,18 @@ function App() {
   });
 
   useEffect(() => {
+    
     const handleMouseMove = (event) => {
       setMousePosition({x: event.clientX, y: event.clientY})
     };
+    
     window.addEventListener('mousemove',handleMouseMove);
+
+    // Limpieza
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+    };
+
   },[]);
   
   return (
@@ -21,7 +29,7 @@ function App() {
       <h3>X: {mousePosition.x} - Y: {mousePosition.y}</h3>
     </div>
   )
-  
+
 }
 
 export default App
