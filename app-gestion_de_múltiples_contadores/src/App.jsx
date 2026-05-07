@@ -34,6 +34,7 @@ function App() {
   };
 
   return (
+    
     <div className='app-container'>
       <button onClick= {addCounters}>Add Counter</button>
       <button onClick= {quitCounters}>Quit Counter</button>
