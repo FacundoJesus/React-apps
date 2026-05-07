@@ -11,4 +11,18 @@ div {
     padding-top: 40px;
     min-height: 100vh;
     background-color: aquamarine;
+    justify-content: center;
+}
+
+button {
+    border-radius: 3px;
+    background-color: rgb(158, 240, 213);
+    cursor: pointer;
+    margin: 5px;
+    padding: 5px;
+    border: solid black 1px;
+}
+
+button:hover {
+    background-color: rgb(28, 119, 89);
 }
