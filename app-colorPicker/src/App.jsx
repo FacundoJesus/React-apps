@@ -30,6 +30,10 @@ function App() {
       <input type='color' value={backgroundColor} onChange={(e) => handleColorChange(e.target.value)}></input>
       </div>
 
+      <div className='selected-color'>
+        Selected Color: {backgroundColor}
+      </div>
+
     </div>
       
   )
