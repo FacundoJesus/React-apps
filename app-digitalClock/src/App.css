@@ -70,3 +70,14 @@ body {
         0 0 25px rgba(103, 232, 249, 0.25),
         0 0 60px rgba(103, 232, 249, 0.12);
 }
+
+.clock-wrapper {
+    text-align: center;
+}
+
+.date {
+    margin-top: 20px;
+    color: rgba(255,255,255,0.75);
+    font-size: 1.3rem;
+    letter-spacing: 1px;
+}
