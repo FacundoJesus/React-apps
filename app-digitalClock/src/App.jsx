@@ -29,8 +29,10 @@ function App() {
   });
 
   return (
-    
+
     <div className='clock-container'>
+
+    <div className='clock-wrapper'>
 
       <div className='clock'>
         {formattedTime}
@@ -39,6 +41,8 @@ function App() {
       <p className='date'>
         {formattedDate}
       </p>
+
+    </div>
 
     </div>
   )
