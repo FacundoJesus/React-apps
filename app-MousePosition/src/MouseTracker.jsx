@@ -26,8 +26,13 @@ function MouseTracker() {
 
     return (
         <div>
+        
             <h1>Mouse Position</h1>
-            <h3>X: {mousePosition.x} - Y: {mousePosition.y}</h3>
+            <div className='coordinates'>
+                <h3>X: {mousePosition.x}</h3>
+                <h3>Y: {mousePosition.y}</h3>
+            </div>
+            
         </div>
     )
 

@@ -9,7 +9,7 @@ function ParentComponent() {
     }
 
     return (
-        <div>
+        <div className="container">
             <button onClick={toggleComponent}>{showComponent ? 'Unmount Tracker':'Mount Tracker'}</button>
             
             {showComponent && <MouseTracker/>}
