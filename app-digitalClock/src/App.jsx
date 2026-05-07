@@ -21,11 +21,25 @@ function App() {
     } 
   )
 
+  const formattedDate = time.toLocaleDateString('en-US', {
+  weekday: 'long',
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric'
+  });
+
   return (
+    
     <div className='clock-container'>
+
       <div className='clock'>
         {formattedTime}
       </div>
+
+      <p className='date'>
+        {formattedDate}
+      </p>
+
     </div>
   )
 }
