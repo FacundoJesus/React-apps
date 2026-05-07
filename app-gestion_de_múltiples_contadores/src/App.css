@@ -1,17 +1,40 @@
 body {
-    background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f6f8;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .app-container {
-    font-family: Arial, Helvetica, sans-serif;
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 30px;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
     text-align: center;
-    padding: 20px;
-    background-color: #f8f9fa;
-    margin: 20px;
 }
 
 h1 {
     color: #343a40;
+    margin-bottom: 25px;
+}
+
+ul {
+    list-style: none; /* elimina puntos */
+    padding: 0;
+    margin-top: 25px;
+}
+
+li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f8f9fa;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    box-shadow: 0px 2px 5px rgba(0,0,0,0.05);
 }
 
 input {
@@ -24,16 +47,37 @@ input {
 }
 
 button {
-    padding: 5px 10px;
-    margin: 5px;
+    padding: 8px 14px;
     border: none;
-    border-radius: 5px;
-    background-color: blue;
-    color:white;
-    cursor:pointer;
+    border-radius: 8px;
+    background-color: #2563eb;
+    color: white;
+    cursor: pointer;
+    font-size: 14px;
+    transition: 0.2s ease;
 }
 
 button:hover {
-    background-color: darkblue;
+    background-color: #1d4ed8;
+    transform: scale(1.05);
+}
+
+
+.counter-info {
+    font-size: 18px;
+    font-weight: bold;
+    color: #343a40;
+}
+
+.button-group {
+    display: flex;
+    gap: 10px;
+}
+
+.top-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 25px;
 }
 

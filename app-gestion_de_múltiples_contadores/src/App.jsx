@@ -36,15 +36,25 @@ function App() {
   return (
     
     <div className='app-container'>
+
+    <div className='top-buttons'>
       <button onClick= {addCounters}>Add Counter</button>
       <button onClick= {quitCounters}>Quit Counter</button>
+    </div>
 
       <ul>
         {counters.map(counter => 
         <li key={counter.id}>
+
+        <span  className='counter-info'>
           Counter {counter.id}: {counter.value}
+        </span>
+
+        <div className='button-group'> 
           <button onClick={() => incrementCounter(counter.id)}>Increment</button>
           <button onClick={() => decrementCounter(counter.id)}>Decrement</button>
+        </div>
+
         </li>)}
       </ul>
       
