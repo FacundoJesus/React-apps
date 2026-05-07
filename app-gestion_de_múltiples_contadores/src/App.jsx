@@ -38,6 +38,7 @@ function App() {
     <div className='app-container'>
       <button onClick= {addCounters}>Add Counter</button>
       <button onClick= {quitCounters}>Quit Counter</button>
+
       <ul>
         {counters.map(counter => 
         <li key={counter.id}>
@@ -46,6 +47,7 @@ function App() {
           <button onClick={() => decrementCounter(counter.id)}>Decrement</button>
         </li>)}
       </ul>
+      
     </div>
    
   )
