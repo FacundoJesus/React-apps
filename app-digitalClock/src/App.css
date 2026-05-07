@@ -1,8 +1,21 @@
-div {
-    font-family: Arial, Helvetica, sans-serif;
-    text-align: center;
-    padding: 0px;
-    margin: 0px;
-    padding-top: 40px;
-    min-height: 100vh;
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.clock-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #282c34;
+}
+
+.clock {
+    font-size: 6rem;
+    font-family: 'Courier New', Courier, monospace;
+    color: #61dafb;
+    background-color: #20232a;
+    padding: 20px 40px;
+    border-radius: 10px;
 }

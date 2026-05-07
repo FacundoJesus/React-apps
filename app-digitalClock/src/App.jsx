@@ -16,16 +16,16 @@ function App() {
 
   const formattedTime = time.toLocaleTimeString('en-US', 
     { hour: '2-digit',
-      
-
-
-
-    } )
+      minute: '2-digit',
+      second: '2-digit'
+    } 
+  )
 
   return (
-    <div>
-      <h1>Hello</h1>
-      {formattedTime}
+    <div className='clock-container'>
+      <div className='clock'>
+        {formattedTime}
+      </div>
     </div>
   )
 }
