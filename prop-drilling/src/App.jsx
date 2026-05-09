@@ -1,9 +1,6 @@
 import { createContext, useContext } from 'react'
 import './App.css'
 
-
-
-
 function ComponentA() {
   return (
     <div style={{border: '2px solid blue', padding:'5px'}}>
@@ -40,10 +37,13 @@ const themeContext = createContext('Light');
 function App() {
   
   return (
-    <div style={{border: '2px solid black', padding:'5px'}}>
-      <h1>Hello (Parent)</h1>
-      <ComponentA />
-    </div>
+
+    <themeContext.Provider value='Dark'>
+      <div style={{border: '2px solid black', padding:'5px'}}>
+        <h1>Hello (Parent)</h1>
+        <ComponentA />
+      </div>
+    </themeContext.Provider>
     
   )
 }
