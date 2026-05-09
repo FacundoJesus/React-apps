@@ -23,12 +23,12 @@ function ComponentB() {
 }
 
 function ComponentC() {
-  
+
   //Lo uso aqui
   const contextValue = useContext(themeContext);
   return (
     <div style={{border: '2px solid red', padding:'5px'}}>
-      <h2>Commponent C (Great-GrandChild)</h2>
+      <h3>Commponent C (Great-GrandChild)</h3>
       <div>The current theme is: {contextValue}</div>
     </div>
   )
