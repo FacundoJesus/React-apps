@@ -1,69 +1,51 @@
 import './App.css'
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import axios from 'axios';
+
+axios.interceptors.request.use(request => {
+  console.log('Starting Request',request);
+  return request;
+})
+
+axios.interceptors.response.use(response => {
+  console.log("Response ", response);
+  return response;
+})
 
 function App() {
 
-  const [dataPosts, setDataPost] = useState([]);
-  const [dataUsers, setDatauser] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [data, setData] = useState([]);
 
-  useEffect(() => {
+  const handleSubmit = (event) => {
 
-    axios.all([
-      axios.get('https://jsonplaceholder.typicode.com/posts'),
-      axios.get('https://jsonplaceholder.typicode.com/users')
-    ])
-       .then(axios.spread((posts,users) => {
-        console.log(posts);
-        console.log(users);
-        setDataPost(posts.data);
-        setDatauser(users.data);
-        setLoading(false);
-        }))
+    event.preventDefault();
 
-      .catch((error) => {
-        console.log(`Error: ${error}`);
-        setError('Failed to fetch data');
-        setLoading(false);
-      });
+    const newPost = {
+      title: 'Posteo de facebook',
+      body: 'Aguante Patronato =)',
+      userId: 1
+    }
 
-  }, []);
+    axios.post('https://jsonplaceholder.typicode.com/posts', newPost)
+      .then(response => {
+        console.log('New Post Added: ', response.data);
+        setData([response.data,...data]);
+
+      })
 
 
-  if (loading) {
-    return <p>Loading...</p>;
-  }
-  if (error) {
-    return <h1>{error}</h1>;
   }
 
-  return (
+ return (
+  <div>
 
-    <div>
-      <h1>Api Rest - POSTS</h1>
-      <ul>
-        {dataPosts.map((post) => (
-          <li key={post.id}>
-            <p><strong>{post.title}</strong></p>
-            <p>{post.body}</p>
-          </li>
-        ))}
-      </ul>
+    <h1>API's in React</h1>
+    <form onSubmit={handleSubmit}>
+      <button>Add Post</button>
+    </form>
 
-      <h1>Api Rest - USERS</h1>
-      <ul>
-        {dataUsers.map((user) => (
-          <li key={user.id}>
-            <p><strong>{user.name}</strong></p>
-            <p>{user.email}</p>
-          </li>
-        ))}
-      </ul>
-
-    </div>
-  )
+  </div>
+ )
 }
 
 export default App;
