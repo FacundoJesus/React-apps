@@ -69,7 +69,7 @@ function App() {
 
   return (
 
-    <div className='container'>
+    <main className='container'>
 
       <form className='formulario' onSubmit={handleSubmit(onSubmit)}>
 
@@ -273,7 +273,7 @@ function App() {
 
       </form>
 
-    </div>
+    </main>
   );
 }
 
