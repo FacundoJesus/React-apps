@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-//Creo instancia axios
+// Creo instancia axios
 const api = axios.create({
   baseURL: 'https://jsonplaceholder.typicode.com/posts',
   headers: {
