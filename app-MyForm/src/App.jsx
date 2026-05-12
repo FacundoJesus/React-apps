@@ -37,9 +37,7 @@ function App() {
                                      validate: {
                                                 isNotNumber: validateName,
                                                }
-                                    }
-                              )
-               }>
+                                    })}>
         </input>
         {errors.name && <span style={{color:'red'}}>{errors.name.message}</span>}
         
