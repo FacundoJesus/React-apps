@@ -4,9 +4,14 @@ import {useEffect} from 'react'
 
 function App() {
 
-  const {register, handleSubmit, watch, formState: {errors}} = useForm();
+  const {register, handleSubmit, watch, formState: {errors}, reset} = useForm();
 
-  const onSubmit = (data) => console.log(data); 
+  const onSubmit = (data) => {
+    console.log(data); 
+
+    // Limpio campos
+    reset();
+  }
 
 
   const watchName = watch('name');
@@ -21,6 +26,7 @@ function App() {
 
 
   return (
+    
     <div>
       <h1>Forms in React</h1>
 
@@ -48,6 +54,7 @@ function App() {
         <input {...register('dni')}></input>
         
         <button type='submit'>Submit</button>
+        <button type='button' onClick={() => reset()}>Reset</button>
 
       </form>
 
