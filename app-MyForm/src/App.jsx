@@ -1,116 +1,280 @@
-import './App.css'
-import { useForm } from "react-hook-form"
+import './App.css';
+import { useState } from 'react';
+import { useForm } from 'react-hook-form';
 
 function App() {
-  
-  const {register, handleSubmit, formState: {errors}, reset, watch} = useForm();
 
-  const onSubmit = (datos) => {
-    console.log(datos);
+  const [loading, setLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [success, setSuccess] = useState(false);
 
-    // Limpio Formulario
-    reset();
-  }
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+    watch
+  } = useForm({
+    mode: 'onChange'
+  });
 
-  // Validaciones
-  const validarApellido = (apellido) => {
-    if(!isNaN(apellido)) {
-      return 'El nombre no debe ser un número.';
+  const onSubmit = async(data) => {
+
+  setLoading(true);
+  setSuccess(false);
+
+  // Simulación API
+  await new Promise(resolve => setTimeout(resolve, 2000));
+
+  console.log(data);
+
+  setLoading(false);
+
+  // Mostrar mensaje
+  setSuccess(true);
+
+  // Limpiar formulario
+  reset();
+
+  // Ocultar mensaje después de 3 segundos
+  setTimeout(() => {
+    setSuccess(false);
+  }, 3000);
+};
+
+  // Validación texto
+  const validarTexto = (texto) => {
+
+    if(texto.trim() === '') {
+      return 'Este campo es obligatorio.';
     }
-    return true;
-  }
 
-  const validarNombre = (nombre) => {
-    if(!isNaN(nombre)) {
-      return 'El nombre no debe ser un número.';
+    if(!isNaN(texto)) {
+      return 'No debe ser un número.';
     }
-    return true;
-  }
 
-  const validarConfirmarContraseña = (confirmarContraseña) => {
-    if(confirmarContraseña !== watch('password')) {
-      return 'La contraseña no coincide.'
+    return true;
+  };
+
+  // Confirmar contraseña
+  const validarConfirmarPassword = (value) => {
+
+    if(value !== watch('password')) {
+      return 'Las contraseñas no coinciden.';
     }
-    return true;
-  }
 
+    return true;
+  };
 
   return (
 
-    <div>
-      <h1>Formulario</h1>
+    <div className='container'>
 
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form className='formulario' onSubmit={handleSubmit(onSubmit)}>
 
-       <label>Nombre:</label>
-       <input {...register('name', {required: 'El nombre es requerido.', 
-                                     minLength: {value: 4,
-                                                 message: 'El nombre debe tener al menos 4 caracteres.'
-                                                },
-                                     validate: {
-                                                isNotNumber: validarNombre,
-                                               }
-                                    })}>
-       </input>
-       {errors.name && <span style={{color:'red'}}>{errors.name.message}</span>}
+        <h1>Formulario de Registro</h1>
+        {
+          success && (
+          <div className='success-message'>
+            ✅ Formulario enviado exitosamente.
+          </div>
+          )
+        }
 
-       <label>Apellido:</label>
-       <input {...register('apellido', {required: 'El apellido es requerido.', 
-                                        minLength: {value: 4,
-                                                    message: 'El nombre debe tener al menos 4 caracteres.'
-                                                },
-                                        validate: {isNotNumber: validarApellido,
-                                               }
-                                    })}>
-       </input>
-       {errors.apellido && <span style={{color:'red'}}>{errors.apellido.message}</span>}
+        {/* Nombre */}
+        <div className='campo'>
 
-       <label>Email:</label>
-       <input {...register('email', {required: 'El email es requerido.', 
-                                     pattern: { value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-                                                message: 'El Email esta mal formulado.'
-                                              }
-                                    })}>
-       </input>
-       {errors.email && <span style={{color:'red'}}>{errors.email.message}</span>}
+          <label htmlFor='name'>Nombre</label>
 
-       <label>DNI:</label>
-       <input {...register('dni', {required: 'El DNI es requerido.', 
-                                     pattern: { value: /^\d{7,8}$/,
-                                                message: 'El DNI debe tener entre 7 y 8 números.'
-                                              }
-                                    })}>
-       </input>
-       {errors.dni && <span style={{color:'red'}}>{errors.dni.message}</span>}
+          <input
+            id='name'
+            type='text'
+            placeholder='Ingrese su nombre'
+            {...register('name', {
+              required: 'El nombre es obligatorio.',
+              minLength: {
+                value: 4,
+                message: 'Debe tener al menos 4 caracteres.'
+              },
+              validate: validarTexto
+            })}
+          />
 
-       <label>Contraseña:</label>
-       <input {...register('password', {required: 'La contraseña es requerida.', 
-                                     pattern: { value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&.#_-])[A-Za-z\d@$!%*?&.#_-]{8,}$/,
-                                                message: 'Debe tener mayúscula, minúscula, número y carácter especial.'
-                                              }
-                                    })}>
-       </input>
-       {errors.password && <span style={{color:'red'}}>{errors.password.message}</span>}
+          {errors.name && (
+            <span className='error'>{errors.name.message}</span>
+          )}
 
-       <label>Confirmar contraseña:</label>
-       <input {...register('confirmPassword', {required: 'La contraseña es requerida.', 
-                                               pattern: { value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&.#_-])[A-Za-z\d@$!%*?&.#_-]{8,}$/,
-                                                          message: 'Debe tener mayúscula, minúscula, número y carácter especial.'
-                                              },
-                                              validate: validarConfirmarContraseña
-                                    })}>
-       </input>
-       {errors.confirmPassword && <span style={{color:'red'}}>{errors.confirmPassword.message}</span>}
-        
+        </div>
 
+        {/* Apellido */}
+        <div className='campo'>
 
+          <label htmlFor='lastName'>Apellido</label>
 
-        <button type='submit'>Enviar</button>
-        <button onClick={() => reset()}>Reiniciar</button>
+          <input
+            id='lastName'
+            type='text'
+            placeholder='Ingrese su apellido'
+            {...register('lastName', {
+              required: 'El apellido es obligatorio.',
+              minLength: {
+                value: 4,
+                message: 'Debe tener al menos 4 caracteres.'
+              },
+              validate: validarTexto
+            })}
+          />
+
+          {errors.lastName && (
+            <span className='error'>{errors.lastName.message}</span>
+          )}
+
+        </div>
+
+        {/* Email */}
+        <div className='campo'>
+
+          <label htmlFor='email'>Email</label>
+
+          <input
+            id='email'
+            type='email'
+            placeholder='ejemplo@email.com'
+            {...register('email', {
+              required: 'El email es obligatorio.',
+              pattern: {
+                value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                message: 'Ingrese un email válido.'
+              }
+            })}
+          />
+
+          {errors.email && (
+            <span className='error'>{errors.email.message}</span>
+          )}
+
+        </div>
+
+        {/* DNI */}
+        <div className='campo'>
+
+          <label htmlFor='dni'>DNI</label>
+
+          <input
+            id='dni'
+            type='text'
+            placeholder='Ingrese su DNI'
+            {...register('dni', {
+              required: 'El DNI es obligatorio.',
+              pattern: {
+                value: /^\d{7,8}$/,
+                message: 'Debe tener entre 7 y 8 números.'
+              }
+            })}
+          />
+
+          {errors.dni && (
+            <span className='error'>{errors.dni.message}</span>
+          )}
+
+        </div>
+
+        {/* Password */}
+        <div className='campo'>
+
+          <label htmlFor='password'>Contraseña</label>
+
+          <div className='password-container'>
+
+            <input
+              id='password'
+              type={showPassword ? 'text' : 'password'}
+              placeholder='Ingrese una contraseña'
+              {...register('password', {
+                required: 'La contraseña es obligatoria.',
+                pattern: {
+                  value:
+                    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&.#_-])[A-Za-z\d@$!%*?&.#_-]{8,}$/,
+                  message:
+                    'Debe tener mayúscula, minúscula, número y carácter especial.'
+                }
+              })}
+            />
+
+            <button
+              type='button'
+              onClick={() => setShowPassword(!showPassword)}
+            >
+              {showPassword ? 'Ocultar' : 'Mostrar'}
+            </button>
+
+          </div>
+
+          {errors.password && (
+            <span className='error'>{errors.password.message}</span>
+          )}
+
+        </div>
+
+        {/* Confirm Password */}
+        <div className='campo'>
+
+          <label htmlFor='confirmPassword'>
+            Confirmar Contraseña
+          </label>
+
+          <div className='password-container'>
+
+            <input
+              id='confirmPassword'
+              type={showConfirmPassword ? 'text' : 'password'}
+              placeholder='Repita la contraseña'
+              {...register('confirmPassword', {
+                required: 'Debe confirmar la contraseña.',
+                validate: validarConfirmarPassword
+              })}
+            />
+
+            <button
+              type='button'
+              onClick={() =>
+                setShowConfirmPassword(!showConfirmPassword)
+              }
+            >
+              {showConfirmPassword ? 'Ocultar' : 'Mostrar'}
+            </button>
+
+          </div>
+
+          {errors.confirmPassword && (
+            <span className='error'>
+              {errors.confirmPassword.message}
+            </span>
+          )}
+
+        </div>
+
+        {/* Botones */}
+        <div className='buttons'>
+
+          <button type='submit' disabled={loading}>
+            {loading ? 'Enviando...' : 'Enviar'}
+          </button>
+
+          <button
+            type='button'
+            onClick={() => reset()}
+          >
+            Reiniciar
+          </button>
+
+        </div>
 
       </form>
+
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
