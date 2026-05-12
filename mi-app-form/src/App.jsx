@@ -1,10 +1,9 @@
 import './App.css'
 import {useForm} from "react-hook-form"
-import {useEffect} from 'react'
 
 function App() {
 
-  const {register, handleSubmit, watch, formState: {errors}, reset} = useForm();
+  const {register, handleSubmit, formState: {errors}, reset} = useForm();
 
   const onSubmit = (data) => {
     console.log(data); 
@@ -13,20 +12,23 @@ function App() {
     reset();
   }
 
+  const validateAdmin = (value) => {
+    if(value !== 'admin') {
+      return 'Only admin is allowed.';
+    }
+    return true;
+  }
 
-  const watchName = watch('name');
-  const watchEmail = watch('email');
-  useEffect(() => {
-    console.log('Name ', watchName);
-  },[watchName])
-
-  useEffect(() => {
-    console.log('Email ', watchEmail);
-  },[watchEmail])
+  const validateName = (value) => {
+    if(!isNaN(value)) {
+      return 'Name cannot be number.';
+    }
+    return true;
+  }
 
 
   return (
-    
+
     <div>
       <h1>Forms in React</h1>
 
@@ -38,7 +40,12 @@ function App() {
         <input {...register('name', {required: 'Name is required.', 
                                      minLength: {value:2,
                                                  message: 'Name should be atleast 2 characters.'
-                                                } })}>
+                                                },
+                                     validate: {
+                                      isNotNumber: validateName,
+                                      isAdmin: validateAdmin
+                                      }
+                                     })}>
         </input>
         {errors.name && <span style={{color:'red'}}>{errors.name.message}</span>}
 
