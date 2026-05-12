@@ -262,9 +262,7 @@ function App() {
             {loading ? 'Enviando...' : 'Enviar'}
           </button>
 
-          <button
-            type='button'
-            onClick={() => reset()}
+          <button type='button' onClick={() => reset()}
           >
             Reiniciar
           </button>
