@@ -30,7 +30,7 @@ function App() {
       <form onSubmit={handleSubmit(onSubmit)}>
 
        <label>Nombre:</label>
-        <input {...register('name', {required: 'El nombre es requerido.', 
+       <input {...register('name', {required: 'El nombre es requerido.', 
                                      minLength: {value: 4,
                                                  message: 'El nombre debe tener al menos 4 caracteres.'
                                                 },
@@ -38,9 +38,12 @@ function App() {
                                                 isNotNumber: validateName,
                                                }
                                     })}>
-        </input>
-        {errors.name && <span style={{color:'red'}}>{errors.name.message}</span>}
+       </input>
+       {errors.name && <span style={{color:'red'}}>{errors.name.message}</span>}
         
+
+
+
         <button type='submit'>Enviar</button>
         <button onClick={() => reset()}>Reiniciar</button>
 
