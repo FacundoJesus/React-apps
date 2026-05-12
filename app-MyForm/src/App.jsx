@@ -14,7 +14,7 @@ function App() {
     handleSubmit,
     formState: { errors },
     reset,
-    watch
+    //watch
   } = useForm({
     mode: 'onChange'
   });
@@ -58,18 +58,18 @@ function App() {
   };
 
   // Confirmar contraseña
-  const validarConfirmarPassword = (value) => {
+  /*const validarConfirmarPassword = (value) => {
 
     if(value !== watch('password')) {
       return 'Las contraseñas no coinciden.';
     }
 
     return true;
-  };
+  };*/
 
   return (
 
-    <main className='container'>
+    <div className='container'>
 
       <form className='formulario' onSubmit={handleSubmit(onSubmit)}>
 
@@ -232,7 +232,7 @@ function App() {
               placeholder='Repita la contraseña'
               {...register('confirmPassword', {
                 required: 'Debe confirmar la contraseña.',
-                validate: validarConfirmarPassword
+                //validate: validarConfirmarPassword
               })}
             />
 
@@ -273,7 +273,7 @@ function App() {
 
       </form>
 
-    </main>
+    </div>
   );
 }
 
