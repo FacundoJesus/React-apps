@@ -3,6 +3,7 @@ import Home from './Home'
 import About from './About'
 import Contact from './Contact'
 import Team from './Team'
+import NotFound from './NotFound'
 
 /*
 -> Home
@@ -44,6 +45,8 @@ function App() {
             </Route>
 
             <Route path='/contact' element={<Contact/>} />
+
+            <Route path='*' element={<NotFound />}></Route>
           </Routes>
         </div>
 
