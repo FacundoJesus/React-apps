@@ -15,18 +15,34 @@ function App() {
   return (
     <Router>
     <div className='min-h-screen bg-gray-50'>
-      <nav className='bg-blue-400'>
-        <ul>
-          <li><Link to="/">Home</Link></li>
-          <li><Link to="/about">About</Link></li>
-          <li><Link to="/contact">Contact</Link></li>
-        </ul>
-      </nav>
-        <Routes>
-          <Route path='/' element={<Home/>} />
-          <Route path='/about' element={<About/>} />
-          <Route path='/contact' element={<Contact/>} />
-        </Routes>
+        <nav className='bg-blue-400 p-4'>
+          <ul className='flex justify-center space-x-6'>
+            <li><Link
+                className='text-white hover:text-yellow-300 font-medium transition duration-300'
+                to="/">Home  
+                </Link>
+            </li>
+            <li><Link
+                className='text-white hover:text-yellow-300 font-medium transition duration-300'
+                to="/about">About
+                </Link>
+            </li>
+            <li><Link
+                className='text-white hover:text-yellow-300 font-medium transition duration-300'
+                to="/contact">Contact
+                </Link>
+            </li>
+          </ul>
+        </nav>
+
+        <div className='container mx-auto py-8'>
+          <Routes>
+            <Route path='/' element={<Home/>} />
+            <Route path='/about' element={<About/>} />
+            <Route path='/contact' element={<Contact/>} />
+          </Routes>
+        </div>
+
       </div>
     </Router>
     
