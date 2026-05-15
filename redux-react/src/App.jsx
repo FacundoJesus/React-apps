@@ -1,9 +1,15 @@
 import './App.css'
 import Counter from './Counter'
+import Display from './Display'
 
 function App() {
+
   return (
-    <Counter/>
+    <div>
+      <Counter/>
+      <Display/>
+    </div>
+
   )
 }
 
