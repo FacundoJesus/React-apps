@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 function Home() {
 
     const navigate = useNavigate();
-
     const handleLogin = () => {
         // Login Logic
         // navigate(-1);
@@ -25,7 +24,7 @@ function Home() {
         <button 
         className="text-white mt-4 text-lg bg-gray-500 p-4 rounded-lg
          hover:text-blue-400 transition duration-300"
-         onClick ={handleLogin}>
+        onClick ={handleLogin}>
             Login        
         </button>
 

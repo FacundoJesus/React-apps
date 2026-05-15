@@ -6,7 +6,6 @@ function Dashboard() {
     const navigate = useNavigate();
 
     const handleLogout = () => {
-        
         navigate("/")
     }
 
