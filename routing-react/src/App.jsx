@@ -4,6 +4,8 @@ import About from './About'
 import Contact from './Contact'
 import Team from './Team'
 import NotFound from './NotFound'
+import CurrentLocation from './CurrentLocation'
+import Dashboard from './Dashboard'
 
 /*
 -> Home
@@ -20,21 +22,26 @@ function App() {
           <ul className='flex justify-center space-x-6'>
             <li><Link
                 className='text-white hover:text-yellow-300 font-medium transition duration-300'
-                to="/">Home  
+                to="/">
+                Home  
                 </Link>
             </li>
             <li><Link
                 className='text-white hover:text-yellow-300 font-medium transition duration-300'
-                to="/about">About
+                to="/about">
+                About
                 </Link>
             </li>
             <li><Link
                 className='text-white hover:text-yellow-300 font-medium transition duration-300'
-                to="/contact">Contact
+                to="/contact">
+                Contact
                 </Link>
             </li>
           </ul>
         </nav>
+
+        <CurrentLocation />
 
         <div className='container mx-auto py-8'>
           <Routes>
@@ -45,6 +52,7 @@ function App() {
             </Route>
 
             <Route path='/contact' element={<Contact/>} />
+            <Route path='/dashboard' element={<Dashboard/>} />
 
             <Route path='*' element={<NotFound />}></Route>
           </Routes>
