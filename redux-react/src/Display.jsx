@@ -5,7 +5,6 @@ const Display = () => {
 
     const count = useSelector((state => state.counter.count))
 
-
     return (
 
         <div>
