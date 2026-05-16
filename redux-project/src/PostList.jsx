@@ -7,18 +7,17 @@ const PostList = () => {
     const dispatch = useDispatch();
     const {posts, loading, error} = useSelector((state) => state.posts);
 
-
     useEffect( () => {
         dispatch(fetchPosts())
     },[dispatch]);
 
-    if(loading) {
-        return <p>Loading...</p>
-    }
-    if(error) {
-        return <p>Error: {error}</p>
+    if (loading) {
+        return <p className="loading">Loading...</p>
     }
 
+    if (error) {
+        return <p className="error">Error: {error}</p>
+    }
 
     return (
         <div>
