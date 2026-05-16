@@ -2,38 +2,38 @@
 // 3 acciones
 
 // Obtener el post
-export const fecthPostRequest = () => ({
+export const fecthPostsRequest = () => ({
     type: "FETCH_POSTS_REQUEST",
 })
 
 // Éxito
-export const fecthPostSuccess = (posts) => ({
+export const fecthPostsSuccess = (posts) => ({
     type: "FETCH_POSTS_SUCCESS",
     payload: posts,
 })
 
 // Fracaso
-export const fecthPostFailure = (error) => ({
+export const fecthPostsFailure = (error) => ({
     type: "FETCH_POSTS_FAILURE",
     payload: error,
 })
 
 
-export default fetchPosts = () => async (dispatch) => {
+export const fetchPosts = () => async (dispatch) => {
 
     // Despachar el post -> Gestionar la carga
-    dispatch(fecthPostRequest());
+    dispatch(fecthPostsRequest());
 
     try {
         const response = await fetch('https://jsonplaceholder.typicode.com/posts');
         const data = await response.json();
 
         // Despachar el post en éxito.
-        dispatch(fecthPostSuccess(data));
+        dispatch(fecthPostsSuccess(data));
     }
     catch(error) {
         // Despachar el post en fracaso.
-        dispatch(fecthPostFailure(error.message));
+        dispatch(fecthPostsFailure(error.message));
     }
 
 } 

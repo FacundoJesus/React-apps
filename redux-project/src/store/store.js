@@ -2,7 +2,7 @@ import { configureStore } from "@reduxjs/toolkit"
 import { postReducer } from "./reducers/postReducer"
 
 const initialState = {
-    post: {
+    posts: {
         posts: [],
         loading: false,
         error: null
