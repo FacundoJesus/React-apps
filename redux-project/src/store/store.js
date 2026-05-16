@@ -3,7 +3,7 @@ import { postReducer } from "./reducers/postReducer"
 
 const initialState = {
     post: {
-        post: [],
+        posts: [],
         loading: false,
         error: null
     }
@@ -11,7 +11,7 @@ const initialState = {
 
 export const store = configureStore({
     reducer: {
-        post: postReducer,
+        posts: postReducer,
     },
     preloadedState: initialState,
 

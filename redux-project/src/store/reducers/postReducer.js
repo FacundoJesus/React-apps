@@ -1,6 +1,6 @@
 
 const initialState = {
-    post: [],
+    posts: [],
     loading: false,
     error: null
 }
@@ -8,20 +8,20 @@ const initialState = {
 export const postReducer = (state=initialState, action) => {
 
     switch (state.type) {
-        case "FETCH_POST_REQUEST":
+        case "FETCH_POSTS_REQUEST":
             return {
                 ...state,
                 loading:true,
             }
 
-        case "FETCH_POST_SUCCESS":
+        case "FETCH_POSTS_SUCCESS":
             return {
                 ...state,
                 loading:false,
                 posts: action.payload,
             }
 
-        case "FETCH_POST_FAILURE":
+        case "FETCH_POSTS_FAILURE":
             return {
                 ...state,
                 loading:false,

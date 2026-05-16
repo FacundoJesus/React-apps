@@ -3,18 +3,18 @@
 
 // Obtener el post
 export const fecthPostRequest = () => ({
-    type: "FETCH_POST_REQUEST",
+    type: "FETCH_POSTS_REQUEST",
 })
 
 // Éxito
 export const fecthPostSuccess = (posts) => ({
-    type: "FETCH_POST_SUCCESS",
+    type: "FETCH_POSTS_SUCCESS",
     payload: posts,
 })
 
 // Fracaso
 export const fecthPostFailure = (error) => ({
-    type: "FETCH_POST_FAILURE",
+    type: "FETCH_POSTS_FAILURE",
     payload: error,
 })
 
